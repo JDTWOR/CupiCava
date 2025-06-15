@@ -142,6 +142,7 @@ public class Vino {
    * a�o elaboraci�n, contenido en az�car, tipo, color, lugar de origen e image
    * 
    * 
+   * 
    * dados por
    * par�metro.
    * 
@@ -151,6 +152,7 @@ public class Vino {
    *                         pPresentacion == BARRIL).
    * @param pAnhoElaboracion A�o de elaboraci�n del vino. pAnhoElaboracion > 0.
    *                         
+   * 
    * 
    * @param pContenidoAzucar Contenido en az�car del vino. pContenidoAzucar >= 0
    * @param pTipo            Tipo de vino de acuerdo a su contenido en az�car.
@@ -323,7 +325,13 @@ public class Vino {
    *         Retorna 1 si el vino pVino tiene un menor contenido en az�car. <br>
    */
   public int compararPorContenidoAzucar(Vino pVino) {
-    // TODO Parte2 PuntoD: Implemente el m�todo seg�n la documentaci�n dada.
+    if (this.darContenidoAzucar() == pVino.darContenidoAzucar()) {
+      return 0;
+    } else if (this.darContenidoAzucar() > pVino.darContenidoAzucar()) {
+      return 1;
+    } else {
+      return -1;
+    }
   }
 
   /**
