@@ -22,7 +22,8 @@ package uniandes.cupi2.cupiCava.mundo;
  * contenidoAzucar >= 0 <br>
  * tipo != null <br>
  * tipo != "" <br>
- * tipo == SECO || tipo == ABOCADO || tipo == SEMI_SECO || tipo == SEMI_DULCE || tipo == DULCE <br>
+ * tipo == SECO || tipo == ABOCADO || tipo == SEMI_SECO || tipo == SEMI_DULCE ||
+ * tipo == DULCE <br>
  * color != null <br>
  * color != "" <br>
  * color == TINTO || color == ROSADO || color == BLANCO <br>
@@ -258,7 +259,13 @@ public class Vino {
    *         <br>
    */
   public int compararPorNombre(Vino pVino) {
-    // TODO Parte2 PuntoA: Implemente el m�todo seg�n la documentaci�n dada.
+    if (this.darNombre().compareTo(pVino.darNombre()) == 0) {
+      return 0;
+    } else if (this.darNombre().compareTo(pVino.darNombre()) > 0) {
+      return 1;
+    } else {
+      return -1;
+    }
   }
 
   /**
@@ -355,28 +362,30 @@ public class Vino {
 
   public void verificarInvariante() {
     if (nombre == null || nombre.equals("")) {
-        throw new RuntimeException("Invariante violada: nombre inválido");
+      throw new RuntimeException("Invariante violada: nombre inválido");
     }
-    if (presentacion == null || presentacion.equals("") || !(presentacion.equals(BOTELLA) || presentacion.equals(BARRIL))) {
-        throw new RuntimeException("Invariante violada: presentación inválida");
+    if (presentacion == null || presentacion.equals("")
+        || !(presentacion.equals(BOTELLA) || presentacion.equals(BARRIL))) {
+      throw new RuntimeException("Invariante violada: presentación inválida");
     }
     if (anhoElaboracion <= 0) {
-        throw new RuntimeException("Invariante violada: año de elaboración inválido");
+      throw new RuntimeException("Invariante violada: año de elaboración inválido");
     }
     if (contenidoAzucar < 0) {
-        throw new RuntimeException("Invariante violada: contenido de azúcar inválido");
+      throw new RuntimeException("Invariante violada: contenido de azúcar inválido");
     }
-    if (tipo == null || tipo.equals("") || !(tipo.equals(SECO) || tipo.equals(ABOCADO) || tipo.equals(SEMI_SECO) || tipo.equals(SEMI_DULCE) || tipo.equals(DULCE))) {
-        throw new RuntimeException("Invariante violada: tipo inválido");
+    if (tipo == null || tipo.equals("") || !(tipo.equals(SECO) || tipo.equals(ABOCADO) || tipo.equals(SEMI_SECO)
+        || tipo.equals(SEMI_DULCE) || tipo.equals(DULCE))) {
+      throw new RuntimeException("Invariante violada: tipo inválido");
     }
     if (color == null || color.equals("") || !(color.equals(TINTO) || color.equals(ROSADO) || color.equals(BLANCO))) {
-        throw new RuntimeException("Invariante violada: color inválido");
+      throw new RuntimeException("Invariante violada: color inválido");
     }
     if (lugarOrigen == null || lugarOrigen.equals("")) {
-        throw new RuntimeException("Invariante violada: lugar de origen inválido");
+      throw new RuntimeException("Invariante violada: lugar de origen inválido");
     }
     if (imagen == null || imagen.equals("")) {
-        throw new RuntimeException("Invariante violada: imagen inválida");
+      throw new RuntimeException("Invariante violada: imagen inválida");
     }
   }
 }
