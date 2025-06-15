@@ -33,140 +33,137 @@ import javax.swing.event.ListSelectionListener;
 /**
  * Panel con la lista de vinos de la cava.
  */
-public class PanelListaVinos extends JPanel implements ListSelectionListener, ActionListener
-{
-    // -----------------------------------------------------------------
-    // Constantes
-    // -----------------------------------------------------------------
+public class PanelListaVinos extends JPanel implements ListSelectionListener, ActionListener {
+  // -----------------------------------------------------------------
+  // Constantes
+  // -----------------------------------------------------------------
 
-    /**
-     * Constante que representa el comando de agregar un vino.
-     */
-    private final static String AGREGAR = "Agregar";
+  /**
+   * Constante que representa el comando de agregar un vino.
+   */
+  private final static String AGREGAR = "Agregar";
 
-    // -----------------------------------------------------------------
-    // Atributos
-    // -----------------------------------------------------------------
+  // -----------------------------------------------------------------
+  // Atributos
+  // -----------------------------------------------------------------
 
-    /**
-     * Ventana principal de la aplicación.
-     */
-    private InterfazCupiCava principal;
+  /**
+   * Ventana principal de la aplicación.
+   */
+  private InterfazCupiCava principal;
 
-    // -----------------------------------------------------------------
-    // Atributos de la Interfaz
-    // -----------------------------------------------------------------
+  // -----------------------------------------------------------------
+  // Atributos de la Interfaz
+  // -----------------------------------------------------------------
 
-    /**
-     * Lista de los vinos.
-     */
-    // TODO Parte3 PuntoA: Declare el atributo listaVinos de tipo JList.
+  /**
+   * Lista de los vinos.
+   */
+  // TODO Parte3 PuntoA: Declare el atributo listaVinos de tipo JList.
 
-    /**
-     * Panel con un scroll que contiene a listaVinos.
-     */
-    private JScrollPane scroll;
+  /**
+   * Panel con un scroll que contiene a listaVinos.
+   */
+  private JScrollPane scroll;
 
-    /**
-     * Botón para agregar un nuevo vino.
-     */
-    private JButton botonAgregar;
+  /**
+   * Botón para agregar un nuevo vino.
+   */
+  private JButton botonAgregar;
 
-    // -----------------------------------------------------------------
-    // Constructor
-    // -----------------------------------------------------------------
+  // -----------------------------------------------------------------
+  // Constructor
+  // -----------------------------------------------------------------
 
-    /**
-     * Constructor del panel.
-     * @param pPrincipal Ventana principal de la aplicación. pPrincipal != null.
-     */
-    public PanelListaVinos( InterfazCupiCava pPrincipal )
-    {
-        principal = pPrincipal;
+  /**
+   * Constructor del panel.
+   * 
+   * @param pPrincipal Ventana principal de la aplicación. pPrincipal != null.
+   */
+  public PanelListaVinos(InterfazCupiCava pPrincipal) {
+    principal = pPrincipal;
 
-        setLayout( new BorderLayout( ) );
-        setBorder( new CompoundBorder( new EmptyBorder( 0, 5, 0, 5 ), new TitledBorder( "Lista de vinos" ) ) );
-        setPreferredSize( new Dimension( 250, 0 ) );
+    setLayout(new BorderLayout());
+    setBorder(new CompoundBorder(new EmptyBorder(0, 5, 0, 5), new TitledBorder("Lista de vinos")));
+    setPreferredSize(new Dimension(250, 0));
 
-        // TODO Parte3 PuntoB: Inicializar la lista de vinos y agregarle un ListSelectionListener
-        
+    // TODO Parte3 PuntoB: Inicializar la lista de vinos y agregarle un
+    // ListSelectionListener
 
-     // TODO Parte3 PuntoC: Inicializar el scroll.
-        scroll.setHorizontalScrollBarPolicy( JScrollPane.HORIZONTAL_SCROLLBAR_NEVER );
-        scroll.setVerticalScrollBarPolicy( JScrollPane.VERTICAL_SCROLLBAR_ALWAYS );
-        scroll.setBorder( new CompoundBorder( new EmptyBorder( 3, 3, 3, 3 ), new LineBorder( Color.BLACK, 1 ) ) );
+    // TODO Parte3 PuntoC: Inicializar el scroll.
+    scroll = new JScrollPane();
+    scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+    scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+    scroll.setBorder(new CompoundBorder(new EmptyBorder(3, 3, 3, 3), new LineBorder(Color.BLACK, 1)));
 
-        botonAgregar = new JButton( AGREGAR );
-        botonAgregar.setActionCommand( AGREGAR );
-        botonAgregar.addActionListener( this );
+    botonAgregar = new JButton(AGREGAR);
+    botonAgregar.setActionCommand(AGREGAR);
+    botonAgregar.addActionListener(this);
 
-        add( scroll, BorderLayout.CENTER );
-        add( botonAgregar, BorderLayout.SOUTH );
+    add(scroll, BorderLayout.CENTER);
+    add(botonAgregar, BorderLayout.SOUTH);
+  }
+
+  // -----------------------------------------------------------------
+  // Métodos
+  // -----------------------------------------------------------------
+
+  /**
+   * Actualiza la lista de vinos con la lista recibida por parámetro.
+   * 
+   * @param pListaVinos Lista de los vinos. pListaVinos != null.
+   */
+  public void refrescarLista(ArrayList pListaVinos) {
+    pListaVinos.setListData(pListaVinos.toArray());
+    if (!pListaVinos.isEmpty()) {
+      pListaVinos.setSelectedIndex(0);
+    }
+  }
+
+  /**
+   * Actualiza el vino seleccionado.
+   * 
+   * @param pNombreVino Nombre del vino seleccionado. pNombreVino != null &&
+   *                    pNombreVino != "".
+   */
+  public void seleccionar(String pNombreVino) {
+    int indice = -1;
+    ListModel model = ListaVinos.getModel();
+    for (int i = 0; i < model.getSize(); i++) {
+      String vinoActual = (String) model.getElementAt(i);
+      if (vinoActual.equals(pNombreVino)) {
+        indice = i;
+      }
     }
 
-    // -----------------------------------------------------------------
-    // Métodos
-    // -----------------------------------------------------------------
+    listaVinos.setSelectedIndex(indice);
+    listaVinos.ensureIndexIsVisible(indice);
+  }
 
-    /**
-     * Actualiza la lista de vinos con la lista recibida por parámetro.
-     * @param pListaVinos Lista de los vinos. pListaVinos != null.
-     */
-    public void refrescarLista( ArrayList pListaVinos )
-    {
-        listaVinos.setListData( pListaVinos.toArray( ) );
-        if( !pListaVinos.isEmpty( ) )
-        {
-            listaVinos.setSelectedIndex( 0 );
-        }
+  /**
+   * Atiende el evento cuando el usuario selecciona un vino de la lista.
+   * 
+   * @param pEvento Evento de selección de un elemento de la lista de vinos.
+   *                pEvento != null.
+   */
+  public void valueChanged(ListSelectionEvent pEvento) {
+    if (listaVinos.getSelectedValue() != null) {
+      String nombreVino = (String) listaVinos.getSelectedValue();
+      principal.actualizarInfoVino(nombreVino);
     }
+  }
 
-    /**
-     * Actualiza el vino seleccionado.
-     * @param pNombreVino Nombre del vino seleccionado. pNombreVino != null && pNombreVino != "".
-     */
-    public void seleccionar( String pNombreVino )
-    {
-        int indice = -1;
-        ListModel model = listaVinos.getModel( );
-        for( int i = 0; i < model.getSize( ); i++ )
-        {
-            String vinoActual = ( String )model.getElementAt( i );
-            if( vinoActual.equals( pNombreVino ) )
-            {
-                indice = i;
-            }
-        }
-
-        listaVinos.setSelectedIndex( indice );
-        listaVinos.ensureIndexIsVisible( indice );
+  /**
+   * Manejo de los eventos de los botones.
+   * 
+   * @param pEvento Acción que generó el evento.
+   */
+  public void actionPerformed(ActionEvent pEvento) {
+    String comando = pEvento.getActionCommand();
+    if (comando.equals(AGREGAR)) {
+      DialogoAgregarVino dialogoAgregar = new DialogoAgregarVino(principal);
+      dialogoAgregar.setVisible(true);
     }
-
-    /**
-     * Atiende el evento cuando el usuario selecciona un vino de la lista.
-     * @param pEvento Evento de selección de un elemento de la lista de vinos. pEvento != null.
-     */
-    public void valueChanged( ListSelectionEvent pEvento )
-    {
-        if( listaVinos.getSelectedValue( ) != null )
-        {
-            String nombreVino = ( String )listaVinos.getSelectedValue( );
-            principal.actualizarInfoVino( nombreVino );
-        }
-    }
-
-    /**
-     * Manejo de los eventos de los botones.
-     * @param pEvento Acción que generó el evento.
-     */
-    public void actionPerformed( ActionEvent pEvento )
-    {
-        String comando = pEvento.getActionCommand( );
-        if( comando.equals( AGREGAR ) )
-        {
-            DialogoAgregarVino dialogoAgregar = new DialogoAgregarVino( principal );
-            dialogoAgregar.setVisible( true );
-        }
-    }
+  }
 
 }
