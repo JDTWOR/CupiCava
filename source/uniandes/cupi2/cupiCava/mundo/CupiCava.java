@@ -1,6 +1,6 @@
 /**~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- * Universidad de los Andes (Bogotá - Colombia)
- * Departamento de Ingeniería de Sistemas y Computación 
+ * Universidad de los Andes (Bogotï¿½ - Colombia)
+ * Departamento de Ingenierï¿½a de Sistemas y Computaciï¿½n 
  * Licenciado bajo el esquema Academic Free License version 2.1 
  *
  * Proyecto Cupi2 (http://cupi2.uniandes.edu.co)
@@ -14,8 +14,10 @@ import java.util.ArrayList;
 
 /**
  * Clase que representa la Cupi-Cava. <br>
- * <b>inv: </b> <br>
- * TODO Parte1 PuntoC: Declare la invariante de la clase.
+ * <b>inv:</b> <br>
+ * vinos != null <br>
+ * Para todo vino en vinos: vino != null <br>
+ * Para todo vino en vinos: cumple su invariante <br>
  */
 public class CupiCava {
   // -------------------------------------------------------------
@@ -28,7 +30,7 @@ public class CupiCava {
   private ArrayList<Vino> vinos;
 
   // -------------------------------------------------------------
-  // Método Constructor
+  // Mï¿½todo Constructor
   // -------------------------------------------------------------
 
   /**
@@ -40,7 +42,7 @@ public class CupiCava {
   }
 
   // -------------------------------------------------------------
-  // Métodos
+  // Mï¿½todos
   // -------------------------------------------------------------
 
   /**
@@ -53,8 +55,8 @@ public class CupiCava {
   }
 
   /**
-   * Busca un vino con el nombre dado por parámetro. <br>
-   * <b>pre:</b> La lista de vinos está inicializada.
+   * Busca un vino con el nombre dado por parï¿½metro. <br>
+   * <b>pre:</b> La lista de vinos estï¿½ inicializada.
    * 
    * @param pNombre Nombre del vino. pNombre != null && pNombre != ""
    * @return Vino con el nombre dado, null en caso de no encontrarlo.
@@ -75,8 +77,8 @@ public class CupiCava {
   }
 
   /**
-   * Busca un vino utilizando una búsqueda binaria. <br>
-   * <b>pre: </b> La lista de vinos está inicializada y se encuentra ordenada por
+   * Busca un vino utilizando una bï¿½squeda binaria. <br>
+   * <b>pre: </b> La lista de vinos estï¿½ inicializada y se encuentra ordenada por
    * nombre.
    * 
    * @param pNombre Nombre del vino que se va a buscar. pNombre != null && pNombre
@@ -84,62 +86,62 @@ public class CupiCava {
    * @return Vino con el nombre dado, null en caso de no encontrarlo.
    */
   public Vino buscarBinarioPorNombre(String pNombre) {
-    // TODO Parte2 PuntoH: Implemente el método según la documentación dada.
+    // TODO Parte2 PuntoH: Implemente el mï¿½todo segï¿½n la documentaciï¿½n dada.
   }
 
   /**
-   * Busca el vino más dulce (con mayor contenido en azúcar) de la cava. <br>
-   * <b>pre:</b> La lista de vinos está inicializada.
+   * Busca el vino mï¿½s dulce (con mayor contenido en azï¿½car) de la cava. <br>
+   * <b>pre:</b> La lista de vinos estï¿½ inicializada.
    * 
-   * @return Vino más dulce de la cava. Si la cava no tiene vinos se retorna null.
-   *         Si existen varios vinos con el contenido en azúcar más alto, se
+   * @return Vino mï¿½s dulce de la cava. Si la cava no tiene vinos se retorna null.
+   *         Si existen varios vinos con el contenido en azï¿½car mï¿½s alto, se
    *         retorna el primer vino
    *         encontrado.
    */
   public Vino buscarVinoMasDulce() {
-    // TODO Parte2 PuntoI: Implemente el método según la documentación dada.
+    // TODO Parte2 PuntoI: Implemente el mï¿½todo segï¿½n la documentaciï¿½n dada.
   }
 
   /**
-   * Busca el vino más seco (con menor contenido en azúcar) de la cava. <br>
-   * <b>pre:</b> La lista de vinos está inicializada.
+   * Busca el vino mï¿½s seco (con menor contenido en azï¿½car) de la cava. <br>
+   * <b>pre:</b> La lista de vinos estï¿½ inicializada.
    * 
-   * @return Vino más seco de la cava. Si la cava no tiene vinos se retorna null.
-   *         Si existen varios vinos con el contenido en azúcar más bajo, se
+   * @return Vino mï¿½s seco de la cava. Si la cava no tiene vinos se retorna null.
+   *         Si existen varios vinos con el contenido en azï¿½car mï¿½s bajo, se
    *         retorna el primer vino
    *         encontrado.
    */
   public Vino buscarVinoMasSeco() {
-    // TODO Parte2 PuntoJ: Implemente el método según la documentación dada.
+    // TODO Parte2 PuntoJ: Implemente el mï¿½todo segï¿½n la documentaciï¿½n dada.
   }
 
   /**
-   * Busca los vinos del tipo dado por parámetro. <br>
-   * <b>pre:</b> La lista de vinos está inicializada.
+   * Busca los vinos del tipo dado por parï¿½metro. <br>
+   * <b>pre:</b> La lista de vinos estï¿½ inicializada.
    * 
-   * @param pTipo Tipo de vino de acuerdo a su contenido en azúcar.pTipo != null
+   * @param pTipo Tipo de vino de acuerdo a su contenido en azï¿½car.pTipo != null
    *              && pTipo != "" && (pTipo == SECO || pTipo == ABOCADO || pTipo ==
    *              SEMI_SECO || pTipo ==
    *              SEMI_DULCE || pTipo == DULCE).
    * @return Lista de vinos del tipo dado.
    */
   public ArrayList<Vino> buscarVinosDeTipo(String pTipo) {
-    // TODO Parte2 PuntoK: Implemente el método según la documentación dada.
+    // TODO Parte2 PuntoK: Implemente el mï¿½todo segï¿½n la documentaciï¿½n dada.
   }
 
   /**
    * Agrega un nuevo vino a la cava si no existe actualmente un vino en la cava
    * con el mismo nombre.<br>
-   * <b>pre:</b> La lista de vinos está inicializada.<br>
-   * <b>post:</b> Se agregó un nuevo vino a la lista de vinos.<br>
+   * <b>pre:</b> La lista de vinos estï¿½ inicializada.<br>
+   * <b>post:</b> Se agregï¿½ un nuevo vino a la lista de vinos.<br>
    * 
    * @param pNombre          Nombre del vino. pNombre != null && pNombre != "".
-   * @param pPresentacion    Presentación del vino. pPresentacion != null &&
+   * @param pPresentacion    Presentaciï¿½n del vino. pPresentacion != null &&
    *                         pPresentacion != "" && (pPresentacion == BOTELLA ||
    *                         pPresentacion == BARRIL).
-   * @param pAnhoElaboracion Año de elaboración del vino. pAnhoElaboracion > 0.
-   * @param pContenidoAzucar Contenido en azúcar del vino. pContenidoAzucar >= 0
-   * @param pTipo            Tipo de vino de acuerdo a su contenido en azúcar.
+   * @param pAnhoElaboracion Aï¿½o de elaboraciï¿½n del vino. pAnhoElaboracion > 0.
+   * @param pContenidoAzucar Contenido en azï¿½car del vino. pContenidoAzucar >= 0
+   * @param pTipo            Tipo de vino de acuerdo a su contenido en azï¿½car.
    *                         pTipo != null && pTipo != "" && (pTipo == SECO ||
    *                         pTipo == ABOCADO || pTipo == SEMI_SECO || pTipo ==
    *                         SEMI_DULCE || pTipo == DULCE).
@@ -169,51 +171,57 @@ public class CupiCava {
   /**
    * Ordena ascendentemente la lista de vinos por nombre usando el algoritmo de
    * burbuja. <br>
-   * <b>pre:</b> La lista de vinos está inicializada. <br>
-   * <b>post:</b> La lista de vinos está ordenada por nombre (orden ascendente).
+   * <b>pre:</b> La lista de vinos estï¿½ inicializada. <br>
+   * <b>post:</b> La lista de vinos estï¿½ ordenada por nombre (orden ascendente).
    */
   public void ordenarVinosPorNombre() {
-    // TODO Parte2 PuntoL: Implemente el método según la documentación dada.
+    // TODO Parte2 PuntoL: Implemente el mï¿½todo segï¿½n la documentaciï¿½n dada.
   }
 
   /**
-   * Ordena descendentemente la lista de vinos por año de elaboración usando el
-   * algoritmo de selección. <br>
-   * <b>pre:</b> La lista de vinos está inicializada. <br>
-   * <b>post:</b> La lista de vinos está ordenada por año de elaboración (orden
+   * Ordena descendentemente la lista de vinos por aï¿½o de elaboraciï¿½n usando el
+   * algoritmo de selecciï¿½n. <br>
+   * <b>pre:</b> La lista de vinos estï¿½ inicializada. <br>
+   * <b>post:</b> La lista de vinos estï¿½ ordenada por aï¿½o de elaboraciï¿½n (orden
    * descendente).
    */
   public void ordenarVinosPorAnhoElaboracion() {
-    // TODO Parte2 PuntoM: Implemente el método según la documentación dada.
+    // TODO Parte2 PuntoM: Implemente el mï¿½todo segï¿½n la documentaciï¿½n dada.
   }
 
   /**
    * Ordena ascendentemente la lista de vinos por lugar de origen usando el
-   * algoritmo de inserción. <br>
-   * <b>pre:</b> La lista de vinos está inicializada.<br>
-   * <b> post: </b>La lista de vinos está ordenada por lugar de origen (orden
+   * algoritmo de inserciï¿½n. <br>
+   * <b>pre:</b> La lista de vinos estï¿½ inicializada.<br>
+   * <b> post: </b>La lista de vinos estï¿½ ordenada por lugar de origen (orden
    * ascendente).
    */
   public void ordenarVinosPorLugarOrigen() {
-    // TODO Parte2 PuntoN: Implemente el método según la documentación dada.
+    // TODO Parte2 PuntoN: Implemente el mï¿½todo segï¿½n la documentaciï¿½n dada.
   }
 
   // -----------------------------------------------------------------
   // Invariante
   // -----------------------------------------------------------------
 
-  // TODO Parte1 PuntoD: Documente e implemente el método verificarInvariante. Si
-  // lo desea puede crear métodos privados en esta parte.
-
-  // -----------------------------------------------------------------
-  // Puntos de Extensión
-  // -----------------------------------------------------------------
-  public boolean verificarInvariante() {
-    return true;
+  public void verificarInvariante() {
+    if (vinos == null) {
+        throw new RuntimeException("Invariante violada: la lista de vinos es nula");
+    }
+    for (Vino vino : vinos) {
+        if (vino == null) {
+            throw new RuntimeException("Invariante violada: hay un vino nulo en la lista");
+        }
+        vino.verificarInvariante();
+    }
   }
 
+  // -----------------------------------------------------------------
+  // Puntos de Extensiï¿½n
+  // -----------------------------------------------------------------
+
   /**
-   * Método para la extensión 1.
+   * Mï¿½todo para la extensiï¿½n 1.
    * 
    * @return Respuesta 1.
    */
@@ -222,7 +230,7 @@ public class CupiCava {
   }
 
   /**
-   * Método para la extensión 2.
+   * Mï¿½todo para la extensiï¿½n 2.
    * 
    * @return Respuesta 2.
    */

@@ -353,8 +353,6 @@ public class Vino {
   // Invariante
   // -----------------------------------------------------------------
 
-  // TODO Parte1 PuntoB: Documente e implemente el m�todo verificarInvariante. Si
-  // lo desea puede crear m�todos privados en esta parte.
   public void verificarInvariante() {
     if (nombre == null || nombre.equals("")) {
         throw new RuntimeException("Invariante violada: nombre inválido");
