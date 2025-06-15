@@ -137,8 +137,11 @@ public class Vino {
 
   /**
    * Inicializa el vino con la informaci�n dada por par�metro. <br>
-   * <b>post: </b> El vino se inicializ� con los valores de nombre, presentaci�n,
-   * a�o elaboraci�n, contenido en az�car, tipo, color, lugar de origen e imagen
+   * <b>post: </b> El vino se inicializ� con los valores de nombre, p
+   * esentaci�n,
+   * a�o elaboraci�n, contenido en az�car, tipo, color, lugar de origen e image
+   * 
+   * 
    * dados por
    * par�metro.
    * 
@@ -147,6 +150,8 @@ public class Vino {
    *                         pPresentacion != "" && (pPresentacion == BOTELLA ||
    *                         pPresentacion == BARRIL).
    * @param pAnhoElaboracion A�o de elaboraci�n del vino. pAnhoElaboracion > 0.
+   *                         
+   * 
    * @param pContenidoAzucar Contenido en az�car del vino. pContenidoAzucar >= 0
    * @param pTipo            Tipo de vino de acuerdo a su contenido en az�car.
    *                         pTipo != null && pTipo != "" && (pTipo == SECO ||
@@ -279,7 +284,13 @@ public class Vino {
    *         presentaci�n. <br>
    */
   public int compararPorPresentacion(Vino pVino) {
-    // TODO Parte2 PuntoB: Implemente el m�todo seg�n la documentaci�n dada.
+    if (this.darPresentacion().compareTo(pVino.darPresentacion()) == 0) {
+      return 0;
+    } else if (this.darPresentacion().compareTo(pVino.darPresentacion()) > 0) {
+      return 1;
+    } else {
+      return -1;
+    }
   }
 
   /**
@@ -293,7 +304,13 @@ public class Vino {
    *         elaboraci�n. <br>
    */
   public int compararPorAnhoElaboracion(Vino pVino) {
-    // TODO Parte2 PuntoC: Implemente el m�todo seg�n la documentaci�n dada.
+    if (this.darAnhoElaboracion() == pVino.darAnhoElaboracion()) {
+      return 0;
+    } else if (this.darAnhoElaboracion() > pVino.darAnhoElaboracion()) {
+      return 1;
+    } else {
+      return -1;
+    }
   }
 
   /**
@@ -301,7 +318,8 @@ public class Vino {
    * 
    * @param pVino Vino contra el cual se est� comparando. pVino !=null.
    * @return Retorna 0 si los vinos tienen el mismo contenido en az�car. <br>
-   *         Retorna -1 si el vino pVino tiene un mayor contenido en az�car. <br>
+   *         Retorna -1 si el vino pVino tiene un mayor contenido en az�car. <
+   *         r>
    *         Retorna 1 si el vino pVino tiene un menor contenido en az�car. <br>
    */
   public int compararPorContenidoAzucar(Vino pVino) {
