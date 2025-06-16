@@ -143,6 +143,12 @@ public class Vino {
    * 
    * 
    * 
+   * 
+   * 
+   * 
+   * 
+   * 
+   * 
    * dados por
    * par�metro.
    * 
@@ -152,6 +158,12 @@ public class Vino {
    *                         pPresentacion == BARRIL).
    * @param pAnhoElaboracion A�o de elaboraci�n del vino. pAnhoElaboracion > 0.
    *                         
+   * 
+   * 
+   * 
+   * 
+   * 
+   * 
    * 
    * 
    * @param pContenidoAzucar Contenido en az�car del vino. pContenidoAzucar >= 0
@@ -266,13 +278,7 @@ public class Vino {
    *         <br>
    */
   public int compararPorNombre(Vino pVino) {
-    if (this.darNombre().compareTo(pVino.darNombre()) == 0) {
-      return 0;
-    } else if (this.darNombre().compareTo(pVino.darNombre()) > 0) {
-      return 1;
-    } else {
-      return -1;
-    }
+    return this.nombre.compareTo(pVino.darNombre());
   }
 
   /**
@@ -286,13 +292,7 @@ public class Vino {
    *         presentaci�n. <br>
    */
   public int compararPorPresentacion(Vino pVino) {
-    if (this.darPresentacion().compareTo(pVino.darPresentacion()) == 0) {
-      return 0;
-    } else if (this.darPresentacion().compareTo(pVino.darPresentacion()) > 0) {
-      return 1;
-    } else {
-      return -1;
-    }
+    return this.presentacion.compareTo(pVino.darPresentacion());
   }
 
   /**
@@ -325,9 +325,9 @@ public class Vino {
    *         Retorna 1 si el vino pVino tiene un menor contenido en az�car. <br>
    */
   public int compararPorContenidoAzucar(Vino pVino) {
-    if (this.darContenidoAzucar() == pVino.darContenidoAzucar()) {
+    if (this.contenidoAzucar == pVino.darContenidoAzucar()) {
       return 0;
-    } else if (this.darContenidoAzucar() > pVino.darContenidoAzucar()) {
+    } else if (this.contenidoAzucar > pVino.darContenidoAzucar()) {
       return 1;
     } else {
       return -1;
@@ -344,6 +344,7 @@ public class Vino {
    */
   public int compararPorTipo(Vino pVino) {
     // TODO Parte2 PuntoE: Implemente el m�todo seg�n la documentaci�n dada.
+    return 1;
   }
 
   /**
@@ -356,7 +357,7 @@ public class Vino {
    *         Retorna 1 si el vino pVino tiene un valor "MENOR" para el color. <br>
    */
   public int compararPorColor(Vino pVino) {
-    // TODO Parte2 PuntoF: Implemente el m�todo seg�n la documentaci�n dada.
+    return this.color.compareTo(pVino.darColor());
   }
 
   /**
@@ -370,7 +371,7 @@ public class Vino {
    *         origen. <br>
    */
   public int compararPorLugarOrigen(Vino pVino) {
-    // TODO Parte2 PuntoG: Implemente el m�todo seg�n la documentaci�n dada.
+    return this.lugarOrigen.compareTo(pVino.darLugarOrigen());
   }
 
   /**
@@ -388,30 +389,30 @@ public class Vino {
 
   public void verificarInvariante() {
     if (nombre == null || nombre.equals("")) {
-      throw new RuntimeException("Invariante violada: nombre inválido");
+      throw new RuntimeException("el nombre es inválido");
     }
     if (presentacion == null || presentacion.equals("")
         || !(presentacion.equals(BOTELLA) || presentacion.equals(BARRIL))) {
-      throw new RuntimeException("Invariante violada: presentación inválida");
+      throw new RuntimeException("la presentación es inválida");
     }
     if (anhoElaboracion <= 0) {
-      throw new RuntimeException("Invariante violada: año de elaboración inválido");
+      throw new RuntimeException("el año de elaboración es inválido");
     }
     if (contenidoAzucar < 0) {
-      throw new RuntimeException("Invariante violada: contenido de azúcar inválido");
+      throw new RuntimeException("el contenido de azúcar es inválido");
     }
     if (tipo == null || tipo.equals("") || !(tipo.equals(SECO) || tipo.equals(ABOCADO) || tipo.equals(SEMI_SECO)
         || tipo.equals(SEMI_DULCE) || tipo.equals(DULCE))) {
-      throw new RuntimeException("Invariante violada: tipo inválido");
+      throw new RuntimeException("el tipo de azucar es inválido");
     }
     if (color == null || color.equals("") || !(color.equals(TINTO) || color.equals(ROSADO) || color.equals(BLANCO))) {
-      throw new RuntimeException("Invariante violada: color inválido");
+      throw new RuntimeException("el color es inválido");
     }
     if (lugarOrigen == null || lugarOrigen.equals("")) {
-      throw new RuntimeException("Invariante violada: lugar de origen inválido");
+      throw new RuntimeException("el lugar de origen es inválido");
     }
     if (imagen == null || imagen.equals("")) {
-      throw new RuntimeException("Invariante violada: imagen inválida");
+      throw new RuntimeException("la imagen es inválida");
     }
   }
 }
