@@ -167,7 +167,15 @@ public class CupiCava {
    * @return Lista de vinos del tipo dado.
    */
   public ArrayList<Vino> buscarVinosDeTipo(String pTipo) {
-    // TODO Parte2 PuntoK: Implemente el m�todo seg�n la documentaci�n dada.
+    ArrayList<Vino> lista_tipo_vinos = new ArrayList<>();
+
+    for (Vino vino : vinos) {
+      if (vino.darTipo().equals(pTipo)) {
+        lista_tipo_vinos.add(vino);
+      }
+    }
+
+    return lista_tipo_vinos;
   }
 
   /**
@@ -182,6 +190,7 @@ public class CupiCava {
    *                         pPresentacion == BARRIL).
    * @param pAnhoElaboracion A�o de elaboraci�n del vino. pAnhoElaboracion > 0.
    *                         
+   * 
    * 
    * 
    * 
@@ -229,9 +238,11 @@ public class CupiCava {
    * 
    * 
    * 
+   * 
    * algoritmo de selecci�n. <br>
    * <b>pre:</b> La lista de vinos est� inicializada. <br>
    * <b>post:</b> La lista de vinos est� ordenada por a�o de elaboraci�n (orde
+   * 
    * 
    * 
    * 
