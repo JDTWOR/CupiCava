@@ -141,7 +141,19 @@ public class CupiCava {
    *         encontrado.
    */
   public Vino buscarVinoMasSeco() {
-    // TODO Parte2 PuntoJ: Implemente el m�todo seg�n la documentaci�n dada.
+    if (vinos.isEmpty()) {
+      return null;
+    }
+
+    Vino primero = vinos.get(0);
+
+    for (int i = 1; i < vinos.size(); i++) {
+      if (primero.darContenidoAzucar() > vinos.get(i).darContenidoAzucar()) {
+        primero = vinos.get(i);
+      }
+    }
+
+    return primero;
   }
 
   /**
@@ -170,6 +182,7 @@ public class CupiCava {
    *                         pPresentacion == BARRIL).
    * @param pAnhoElaboracion A�o de elaboraci�n del vino. pAnhoElaboracion > 0.
    *                         
+   * 
    * 
    * 
    * @param pContenidoAzucar Contenido en az�car del vino. pContenidoAzucar >= 0
@@ -215,9 +228,11 @@ public class CupiCava {
    * 
    * 
    * 
+   * 
    * algoritmo de selecci�n. <br>
    * <b>pre:</b> La lista de vinos est� inicializada. <br>
    * <b>post:</b> La lista de vinos est� ordenada por a�o de elaboraci�n (orde
+   * 
    * 
    * 
    * 
