@@ -78,7 +78,8 @@ public class CupiCava {
 
   /**
    * Busca un vino utilizando una b�squeda binaria. <br>
-   * <b>pre: </b> La lista de vinos est� inicializada y se encuentra ordenada por
+   * <b>pre: </b> La lista de vinos est� inicializada y se encuentra ordenada p
+   * r
    * nombre.
    * 
    * @param pNombre Nombre del vino que se va a buscar. pNombre != null && pNombre
@@ -86,14 +87,30 @@ public class CupiCava {
    * @return Vino con el nombre dado, null en caso de no encontrarlo.
    */
   public Vino buscarBinarioPorNombre(String pNombre) {
-    // TODO Parte2 PuntoH: Implemente el m�todo seg�n la documentaci�n dada.
+    int inicio = 0;
+    int fin = vinos.size() - 1;
+
+    while (inicio <= fin) {
+      int medio = (inicio + fin) / 2;
+
+      if (vinos.get(medio).darNombre().compareTo(pNombre) == 0) {
+        return vinos.get(medio);
+      } else if (vinos.get(medio).darNombre().compareTo(pNombre) < 0) {
+        inicio = medio + 1;
+      } else {
+        fin = medio - 1;
+      }
+    }
+    return null;
+
   }
 
   /**
    * Busca el vino m�s dulce (con mayor contenido en az�car) de la cava. <br>
    * <b>pre:</b> La lista de vinos est� inicializada.
    * 
-   * @return Vino m�s dulce de la cava. Si la cava no tiene vinos se retorna null.
+   * @return Vino m�s dulce de la cava. Si la cava no tiene vinos se retorna n
+   *         ll.
    *         Si existen varios vinos con el contenido en az�car m�s alto, se
    *         retorna el primer vino
    *         encontrado.
@@ -106,7 +123,8 @@ public class CupiCava {
    * Busca el vino m�s seco (con menor contenido en az�car) de la cava. <br>
    * <b>pre:</b> La lista de vinos est� inicializada.
    * 
-   * @return Vino m�s seco de la cava. Si la cava no tiene vinos se retorna null.
+   * @return Vino m�s seco de la cava. Si la cava no tiene vinos se retorna n
+   *         ll.
    *         Si existen varios vinos con el contenido en az�car m�s bajo, se
    *         retorna el primer vino
    *         encontrado.
@@ -140,6 +158,8 @@ public class CupiCava {
    *                         pPresentacion != "" && (pPresentacion == BOTELLA ||
    *                         pPresentacion == BARRIL).
    * @param pAnhoElaboracion A�o de elaboraci�n del vino. pAnhoElaboracion > 0.
+   *                         
+   * 
    * @param pContenidoAzucar Contenido en az�car del vino. pContenidoAzucar >= 0
    * @param pTipo            Tipo de vino de acuerdo a su contenido en az�car.
    *                         pTipo != null && pTipo != "" && (pTipo == SECO ||
@@ -180,9 +200,13 @@ public class CupiCava {
 
   /**
    * Ordena descendentemente la lista de vinos por a�o de elaboraci�n usando el
+   * 
+   * 
    * algoritmo de selecci�n. <br>
    * <b>pre:</b> La lista de vinos est� inicializada. <br>
-   * <b>post:</b> La lista de vinos est� ordenada por a�o de elaboraci�n (orden
+   * <b>post:</b> La lista de vinos est� ordenada por a�o de elaboraci�n (orde
+   * 
+   * 
    * descendente).
    */
   public void ordenarVinosPorAnhoElaboracion() {
@@ -206,13 +230,13 @@ public class CupiCava {
 
   public void verificarInvariante() {
     if (vinos == null) {
-        throw new RuntimeException("Invariante violada: la lista de vinos es nula");
+      throw new RuntimeException("Invariante violada: la lista de vinos es nula");
     }
     for (Vino vino : vinos) {
-        if (vino == null) {
-            throw new RuntimeException("Invariante violada: hay un vino nulo en la lista");
-        }
-        vino.verificarInvariante();
+      if (vino == null) {
+        throw new RuntimeException("Invariante violada: hay un vino nulo en la lista");
+      }
+      vino.verificarInvariante();
     }
   }
 
